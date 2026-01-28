@@ -30,7 +30,7 @@ export default function getPlaceholderModule(Quill: QuillTypes.Quill, options?: 
       this.quill.root.addEventListener('click', <EventListener>this.onClick)
       this.quill.on('text-change', this.onTextChange)
 
-      this.quill.insertPlaceholder = (placeholder:Placeholder) => {
+      ;(this.quill as any).insertPlaceholder = (placeholder:Placeholder) => {
         const selection = this.quill.getSelection()
 
         const index = selection ? selection.index : 0
