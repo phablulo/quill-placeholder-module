@@ -29,6 +29,16 @@ export default function getPlaceholderModule(Quill: QuillTypes.Quill, options?: 
       this.quill.getModule('toolbar').addHandler('placeholder', this.toolbarHandler)
       this.quill.root.addEventListener('click', <EventListener>this.onClick)
       this.quill.on('text-change', this.onTextChange)
+
+      this.quill.insertPlaceholder = (placeholder:Placeholder) => {
+        const selection = this.quill.getSelection()
+
+        const index = selection ? selection.index : 0
+        const length = selection ? selection.length : 0
+        this.quill.deleteText(index, length)
+        this.quill.insertEmbed(index, 'placeholder', placeholder, Quill.sources.USER)
+        this.quill.setSelection(index + 1, 0)
+      }
     }
 
     onTextChange = (_: any, oldDelta: QuillTypes.DeltaStatic, source: QuillTypes.Sources) => {
