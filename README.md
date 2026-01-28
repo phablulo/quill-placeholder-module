@@ -1,5 +1,17 @@
 # quill-placeholder-module
 Quill module for adding placeholders. [Demo](https://codepen.io/jspaine/pen/MozyNp)
+
+## What this fork do?
+
+Let's the user add placeholders programatically:
+
+```js
+var quill = ...
+quill.insertPlaceholder({id: 'foo', label: 'Foo'})
+```
+
+I also added the built files to the repository (yeah, I know) to make it easy to import from the repo.
+
 ## Install
 ```
 npm install --save quill-placeholder-module
